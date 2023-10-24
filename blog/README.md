@@ -10,6 +10,8 @@ This portfolio is built with **Next.js** and a library called [Nextra](https://n
 
 https://demo.vercel.blog
 
+This is a test to check if pipeline works on push to branches.
+
 ## Configuration
 
 1. Update your name in `theme.config.js` or change the footer.

@@ -2,13 +2,17 @@ name: CI/CD for Next.js
 
 on:
   push:
-  
+    branches:
+      - '**'
   pull_request:
+    branches:
+      - '**'
 
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/')
 
     steps:
       - name: Check Out Code
@@ -32,6 +36,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/')
 
     steps:
       - name: Check Out Code

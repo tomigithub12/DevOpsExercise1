@@ -2,6 +2,9 @@ name: CI/CD for Next.js
 
 on:
   push:
+    paths:
+      - 'this/dir/*'
+      - 'a/tree/**'
     branches:
       - '**'
   pull_request:

@@ -1,0 +1,78 @@
+name: CI/CD for Next.js
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.18.0 # Use the desired Node.js version
+
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./blog
+
+      - name: Lint with ESLint
+        run: |
+          npm run lint
+          echo "Lint Step"
+        working-directory: ./blog
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.18.0 # Use the specified Node.js version
+
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./blog
+
+      - name: Build the Next.js Application
+        run: |
+          npm run build
+          echo "Build Step"
+        working-directory: ./blog
+
+  audit:
+    name: Audit
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release'
+
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.18.0 # Use the specified Node.js version
+
+      - name: Install Dependencies
+        run: |
+          npm install
+          echo "Audit Step"
+        working-directory: ./blog
+
+      - name: Security Audit
+        run: npm audit --audit-level=high
+             echo "Audit Step"
+        working-directory: ./blog      

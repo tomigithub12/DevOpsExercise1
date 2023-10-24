@@ -73,6 +73,7 @@ jobs:
         working-directory: ./blog
 
       - name: Security Audit
-        run: npm audit --audit-level=high
-             echo "Audit Step"
+        run: |
+          npm audit --audit-level=high
+          echo "Audit Step"
         working-directory: ./blog      

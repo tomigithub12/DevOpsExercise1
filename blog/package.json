@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "node ./scripts/gen-rss.js && next build",
-    "start": "next start",
+    "start": "node ./scripts/server.js && next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,7 +13,8 @@
     "nextra-theme-blog": "^2.0.0-beta.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rss": "^1.2.2"
+    "rss": "^1.2.2",
+    "express": "4.17.1"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",

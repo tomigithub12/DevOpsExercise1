@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: ghothi/exercise1devops:release
+        image: ghothi/exercise1devops:releasev2
         ports:
         - containerPort: 80
         readinessProbe:
